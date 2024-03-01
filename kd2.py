@@ -1,5 +1,8 @@
 import PySimpleGUI as sg
 
+import json 
+import csv
+
 def read_file(filename):
     try: 
         with open (filename, 'r', encoding='utf8') as file:
@@ -9,6 +12,19 @@ def read_file(filename):
     except Exception as e:
         return f"error:{e}"
     
+def read_json_file(filename):
+    with open(filename, 'r') as file:
+        data = json.load(file)
+        return data
+    
+def read_csv_file(filename):
+    with open(filename, 'r') as file:
+        reader = csv.reader(file)
+        data = list(reader)
+        return data
+    
+
+
 def main():
     layout=[
     [sg.Text('Ievadiet txt datnes nosaukumu:')],
